@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html {
+  font-family: sans-serif;
+  background-image: url('https://images.squarespace-cdn.com/content/v1/5de1ae65065f5b7bc758692f/1576659364267-2UBYJWWG1FMYVDLBZE1G/Neon_Ferns-Clean.jpg?format=2500w');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100%;
+  background-position: fixed;
+}
