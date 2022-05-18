@@ -10,6 +10,7 @@
   display: block;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  color: white;
 }
 
 .input input {
@@ -19,6 +20,11 @@
   border: 1px solid #ccc;
   padding: 0.15rem;
   margin-bottom: 0.5rem;
+}
+
+.input input:hover {
+  background-color: #51135e5e;
+  color: white;
 }
 
 .input input:focus {

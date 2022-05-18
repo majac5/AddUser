@@ -10,7 +10,14 @@
   }
   
   .users li {
+    color: white;
     border: 1px solid #741188;
     margin: 0.5rem 0;
     padding: 0.5rem;
+  }
+
+  .users img {
+    width: 10px;
+    height: 10px;
+    padding-left: 10px;
   }
