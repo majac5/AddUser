@@ -3,6 +3,8 @@ import Card from "../UI/Card";
 import classes from "./AddUser.module.css";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErorrModal";
+import { Link } from "react-router-dom";
+
 
 const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
@@ -51,6 +53,7 @@ const AddUser = (props) => {
         />
       )}
       <Card className={classes.input}>
+        <h1>Add User</h1>
         <form onSubmit={addUserHandler}>
           <label htmlFor="username">Username</label>
           <input
@@ -68,6 +71,7 @@ const AddUser = (props) => {
           ></input>
           <Button type="submit">Add User</Button>
         </form>
+        <Link to="/EditUsers">Edit Users</Link>
       </Card>
     </>
   );

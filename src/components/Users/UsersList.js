@@ -1,19 +1,29 @@
 import React from 'react';
 import classes from './UsersList.module.css';
 import Card from '../UI/Card';
+import {useState} from 'react';
 import {BrowserRouter, Link, Routes, Route} from "react-router-dom";
 
-
 const UsersList = (props) => {
+
+    
+    const [list, setList] = useState([]);
+
+    const handleRemove = (id) => {
+        const newList = list.filter((user) => user.id !== id);
+        setList(newList);
+    }
+
+    console.log(list);
 
     return(
         <Card className={classes.users}>
         <ul>
             {props.users.map((user) => (
                 <li key={user.id}>
-                    {user.name} ({user.age} years old)
-                    <img src="data:image/png;base64,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" alt="edit icon"></img>
-                    <img src='https://flaticons.net/icon.php?slug_category=office&slug_icon=delete' alt="delete icon"></img>
+                   <Link to="/EditUsers">{user.name} ({user.age} years old)</Link>
+                    <img src="https://i.ibb.co/PNCTCTg/download.png" alt="edit icon"></img>
+                  <a href="#" onClick={() => handleRemove(user.id)}><img src='https://i.ibb.co/WnSvKpj/icon.png' alt="delete icon"></img></a>
                 </li>
             ))}
             

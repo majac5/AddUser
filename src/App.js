@@ -1,9 +1,10 @@
 import React,{useState, useEffect} from 'react';
 import './App.css';
-import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
 import AddUser from './components/Users/AddUser';
 import UsersList from './components/Users/UsersList';
 import EditUsers from './components/Users/EditUsers';
+
 
 function App() {
 
@@ -25,11 +26,15 @@ function App() {
   }, [usersList]);
 
 
+
   return (
-    
+
     <div>
-      
-    <AddUser onAddUser={addUserHandler} />
+
+      <Routes>
+        <Route path="/" element={<AddUser onAddUser={addUserHandler} />} />
+        <Route path="EditUsers" element={<EditUsers />} />
+      </Routes>
     {usersList.length !== 0 ? <UsersList users={usersList} /> : null}
     
     </div>
