@@ -1,0 +1,12 @@
+h1 {
+    color: white;
+}
+
+table {
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    border: 1px solid greenyellow;
+    padding: 5px;
+    border-spacing: 40px 0;
+}
