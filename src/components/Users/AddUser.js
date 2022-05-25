@@ -1,16 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../UI/Card";
 import classes from "./AddUser.module.css";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErorrModal";
+import UsersList from "./UsersList";
+import { Link } from "react-router-dom";
 
-
-const AddUser = (props) => {
+const AddUser = () => {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
   const [error, setError] = useState();
+  const [usersList, setUsersList] = useState(() => {
+    const saved = localStorage.getItem("users");
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
 
-  const addUserHandler = (event) => {
+  useEffect(() => {
+    localStorage.setItem("users", JSON.stringify(usersList));
+  }, [usersList]);
+
+  const addUserHandler = (uName, uAge) => {
+    setUsersList((prevUsersList) => {
+      return [
+        ...prevUsersList,
+        { name: uName, age: uAge, id: Math.random().toString() },
+      ];
+    });
+  };
+
+  const addUserErrorHandler = (event) => {
     event.preventDefault();
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
       setError({
@@ -27,7 +46,9 @@ const AddUser = (props) => {
       return;
     }
 
-    props.onAddUser(enteredUsername, enteredAge);
+    addUserHandler(enteredUsername, enteredAge);
+    setEnteredUsername("");
+    setEnteredAge("");
   };
 
   const usernameChangeHandler = (event) => {
@@ -51,9 +72,14 @@ const AddUser = (props) => {
           onConfirm={errorHandler}
         />
       )}
+      <button>
+        <Link style={{ color: "black" }} to="/existingUsers">
+          Existing Users
+        </Link>
+      </button>
       <Card className={classes.input}>
         <h1>Add User</h1>
-        <form onSubmit={addUserHandler}>
+        <form onSubmit={addUserErrorHandler}>
           <label htmlFor="username">Username</label>
           <input
             id="username"
@@ -71,6 +97,7 @@ const AddUser = (props) => {
           <Button type="submit">Add User</Button>
         </form>
       </Card>
+      {usersList.length !== 0 ? <UsersList users={usersList} /> : null};
     </>
   );
 };
