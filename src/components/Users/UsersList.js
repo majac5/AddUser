@@ -13,6 +13,13 @@ const UsersList = (props) => {
     localStorage.setItem("users", JSON.stringify(filterd));
   };
   console.log(users?.filter((user) => user.id));
+
+  const handleEdit = (e) => {
+    
+    setUsers({ input: e.target.value });
+  }
+
+
   return (
     <Card className={classes.users}>
       <ul>
@@ -21,10 +28,12 @@ const UsersList = (props) => {
             <Link to="aboutuser">
               {user.name} ({user.age} years old)
             </Link>
+            <a href="/" onClick={() => handleEdit(user.id)}>
             <img
               src="https://i.ibb.co/PNCTCTg/download.png"
               alt="edit icon"
             ></img>
+            </a>
             <a href="/" onClick={() => handleDelete(user.id)}>
               <img
                 src="https://i.ibb.co/WnSvKpj/icon.png"

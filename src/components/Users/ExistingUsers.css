@@ -1,3 +1,26 @@
+::-webkit-scrollbar {
+    width: 10px;
+    border: 1px solid yellowgreen;
+    direction: ltr;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #412854;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #120a3d;
+  }
+
+  ::-webkit-scrollbar-button {
+      border: 1px solid yellow;
+  }
+
 h1 {
     color: white;
 }
@@ -9,4 +32,11 @@ table {
     border: 1px solid greenyellow;
     padding: 5px;
     border-spacing: 40px 0;
+}
+
+.tableContainer {
+    height: 300px;
+    overflow: auto;
+    width: 500px;
+    margin: 0 auto;
 }

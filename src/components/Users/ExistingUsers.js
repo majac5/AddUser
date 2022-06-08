@@ -36,15 +36,17 @@ const ExistingUsers = () => {
         </Link>
       </button>
       <h1>Fetchani useri</h1>
+      <div className="tableContainer">
       <table>
+        <thead>
         <th>ID</th>
         <th>First name</th>
         <th>Last name</th>
         <th>Avatar</th>
+        </thead> 
         {data?.map((el) => {
           return (
-            <>
-              <tr></tr>
+            <tbody style={{ maxHeight: "50px", overflow: "auto" }}> 
               <tr>
                 <td>{el.id}</td>
                 <td>{el.first_name}</td>
@@ -57,10 +59,11 @@ const ExistingUsers = () => {
                   />
                 </td>
               </tr>
-            </>
+            </tbody>
           );
         })}
       </table>
+      </div>
     </div>
   );
 };
